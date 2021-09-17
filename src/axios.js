@@ -4,14 +4,15 @@ import locolhost from './utils/locolhost';
 const instance = axios.create({
   baseURL: 'https://mallapi.duyiedu.com/',
 });
-const { appkey } = locolhost.getUser('user');
-console.log(appkey, 'appkey');
 instance.interceptors.request.use((config) => {
   console.log(config, 'config');
   if (config.url.includes('/passport')) {
     console.log('进入config');
     return config;
+  } if (config.url.includes('/login')) {
+    return config;
   }
+  const { appkey } = locolhost.getUser('user');
   return {
     ...config,
     params: {
