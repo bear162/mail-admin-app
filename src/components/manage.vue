@@ -1,7 +1,7 @@
 <template>
- <router-view>
- </router-view>
+  <h2>manage</h2>
 </template>
+
 <script>
 export default {
 
